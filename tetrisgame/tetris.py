@@ -20,6 +20,7 @@ class Tetris(object):
         self.pt = [0, 5]
         self.nextpt = [0, 5]
         self.nowmino = np.zeros((3, 3))
+        self.nextmino = np.zeros((3, 3))
 
     def init_mino(self):
         "ミノの一覧の作成"
@@ -51,6 +52,10 @@ class Tetris(object):
                     self.update()
                     time.sleep(0.2)
 
+    def rotate(self):
+        "キーによる回転移動"
+        pass
+
     def detectCollision(self):
         "平行移動の衝突検出"
         for i in range(3):
@@ -58,6 +63,10 @@ class Tetris(object):
                 if self.FIELD_BASE[self.nextpt[0]+i][self.nextpt[1]-1+j] and self.nowmino[i][j] == 1:
                     return False
         return True
+
+    def detectStuck(self):
+        "回転，ブロック生成時の埋没検知"
+        pass
 
     def compDetect(self):
         "行消去の検出，実行"
